@@ -33,7 +33,7 @@ class ApiModule {
             .writeTimeout(20,TimeUnit.SECONDS)
             .connectTimeout(30,TimeUnit.SECONDS)
             .addNetworkInterceptor(HttpLoggingInterceptor().apply {
-                level = HttpLoggingInterceptor.Level.BODY
+                level = HttpLoggingInterceptor.Level.BODY // not production
             })
             .build()
     }
