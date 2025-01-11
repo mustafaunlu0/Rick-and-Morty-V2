@@ -6,11 +6,10 @@ import com.blueplane.ramv2.data.model.NetworkResponse
 import com.blueplane.ramv2.data.model.response.CharacterResponse
 import com.blueplane.ramv2.di.coroutine.IoDispatcher
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.invoke
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class CharacterRepositoryImpl @Inject constructor(
+class CharacterRepositoryImp @Inject constructor(
     private val apiService: ApiService,
     @IoDispatcher
     private val ioDispatcher: CoroutineDispatcher
