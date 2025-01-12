@@ -59,7 +59,11 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.logging.interceptor)
 
+    //Hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
 
+    //Glide
+    implementation(libs.glide)
+    annotationProcessor(libs.compiler)
 }
