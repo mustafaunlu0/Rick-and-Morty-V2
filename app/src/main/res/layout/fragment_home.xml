@@ -2,18 +2,61 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-<FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".presentation.home.HomeFragment">
+    <data>
+        <import type="android.view.View"/>
 
-   <androidx.appcompat.widget.AppCompatButton
-       android:id="@+id/testButton"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="Go to Detail"
-       android:layout_gravity="center"
-       />
+        <variable
+            name="viewState"
+            type="com.blueplane.ramv2.presentation.home.HomeUiState" />
+    </data>
 
-</FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:orientation="vertical"
+        tools:context=".presentation.home.HomeFragment">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:gravity="center_horizontal"
+            android:text="@string/welcome"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="start"
+            android:text="@string/characters"
+            android:layout_marginStart="12dp"
+            android:textColor="@color/gray"
+            android:textSize="25sp" />
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/charactersRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="@{viewState.isLoading()}"
+                android:indeterminateTint="@color/gray"
+                android:layout_marginBottom="40dp"/>
+        </FrameLayout>
+
+    </LinearLayout>
 </layout>

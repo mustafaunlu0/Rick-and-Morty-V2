@@ -1,11 +1,8 @@
 package com.blueplane.ramv2.presentation.home
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import com.blueplane.ramv2.R
 import com.blueplane.ramv2.databinding.FragmentHomeBinding
 import com.blueplane.ramv2.presentation.MainViewModel
@@ -15,15 +12,24 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
-    private val mainViewModel : MainViewModel by activityViewModels()
+    private val mainViewModel: MainViewModel by activityViewModels()
+    private val homeViewModel: HomeViewModel by viewModels()
 
     override fun getLayoutId(): Int = R.layout.fragment_home
 
     override fun handleViewOptions() {
-        with(binding){
-            testButton.setOnClickListener {
-                mainViewModel.navigateToDetailScreen()
+
+    }
+
+    override fun observeValues() {
+        with(homeViewModel) {
+            homeViewState.observe(viewLifecycleOwner) {
+                with(binding) {
+                    viewState = it
+                    executePendingBindings()
+                }
             }
+            getAllCharacters()
         }
     }
 

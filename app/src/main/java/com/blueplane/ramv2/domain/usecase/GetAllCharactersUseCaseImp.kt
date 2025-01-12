@@ -13,8 +13,8 @@ class GetAllCharactersUseCaseImp @Inject constructor(
     private val characterRepository: CharacterRepository,
     private val mapper: CharactersListMapper<Result,CharacterDTO>
 ) : GetAllCharactersUseCase {
-    override fun invoke(): Flow<NetworkResponse<List<CharacterDTO>>> {
-        return flow {
+    override fun invoke(): Flow<NetworkResponse<List<CharacterDTO>>> =
+        flow {
             emit(NetworkResponse.Loading)
             when (val response = characterRepository.getAllCharacters()) {
                 is NetworkResponse.Success -> {
@@ -28,5 +28,5 @@ class GetAllCharactersUseCaseImp @Inject constructor(
                 NetworkResponse.Loading -> Unit
             }
         }
-    }
+
 }

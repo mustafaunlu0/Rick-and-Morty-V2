@@ -32,5 +32,8 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>() {
         }
     }
 
+    override fun observeValues() {
+    }
+
 
 }

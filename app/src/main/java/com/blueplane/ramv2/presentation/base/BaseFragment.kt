@@ -28,9 +28,11 @@ abstract class BaseFragment <DB : ViewDataBinding> : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         handleViewOptions()
+        observeValues()
     }
 
     protected abstract fun handleViewOptions()
+    protected abstract fun observeValues()
 
 
 }

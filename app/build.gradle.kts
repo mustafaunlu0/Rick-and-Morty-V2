@@ -1,9 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlinAndroidKsp)
     alias(libs.plugins.hiltAndroid)
-
+    alias(libs.plugins.kotlin.kapt)
 }
 
 android {
@@ -61,6 +60,6 @@ dependencies {
     implementation(libs.logging.interceptor)
 
     implementation(libs.hilt.android)
-    ksp(libs.hilt.compiler)
+    kapt(libs.hilt.compiler)
 
 }
