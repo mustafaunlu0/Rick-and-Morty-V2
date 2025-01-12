@@ -35,7 +35,7 @@
             android:text="@string/characters"
             android:layout_marginStart="12dp"
             android:textColor="@color/gray"
-            android:textSize="25sp" />
+            android:textSize="20sp" />
 
 
         <FrameLayout

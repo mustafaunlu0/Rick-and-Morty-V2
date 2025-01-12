@@ -1,12 +1,11 @@
 package com.blueplane.ramv2.presentation.home
 
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.blueplane.ramv2.data.model.NetworkResponse
-import com.blueplane.ramv2.data.model.STATUS
+import com.blueplane.ramv2.data.model.Status
 import com.blueplane.ramv2.domain.usecase.GetAllCharactersUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
@@ -27,13 +26,13 @@ class HomeViewModel @Inject constructor(
         getAllCharactersUseCase().onEach {
             when(it){
                 is NetworkResponse.Error -> {
-                    _homeViewState.value = _homeViewState.value?.copy(error = it.error.message,status = STATUS.SUCCESS)
+                    _homeViewState.value = _homeViewState.value?.copy(error = it.error.message,status = Status.SUCCESS)
                 }
                 NetworkResponse.Loading ->  {
-                    _homeViewState.value = _homeViewState.value?.copy(status = STATUS.LOADING)
+                    _homeViewState.value = _homeViewState.value?.copy(status = Status.LOADING)
                 }
                 is NetworkResponse.Success -> {
-                    _homeViewState.value = _homeViewState.value?.copy(characters = it.data, status = STATUS.SUCCESS)
+                    _homeViewState.value = _homeViewState.value?.copy(characters = it.data, status = Status.SUCCESS)
                 }
             }
         }.launchIn(viewModelScope)

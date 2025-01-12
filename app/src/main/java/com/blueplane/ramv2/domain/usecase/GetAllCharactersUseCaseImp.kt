@@ -1,7 +1,7 @@
 package com.blueplane.ramv2.domain.usecase
 
 import com.blueplane.ramv2.data.model.NetworkResponse
-import com.blueplane.ramv2.data.model.dto.CharacterDTO
+import com.blueplane.ramv2.data.model.dto.CharacterModel
 import com.blueplane.ramv2.data.model.response.Result
 import com.blueplane.ramv2.data.repository.CharacterRepository
 import com.blueplane.ramv2.domain.mapper.CharactersListMapper
@@ -11,9 +11,9 @@ import javax.inject.Inject
 
 class GetAllCharactersUseCaseImp @Inject constructor(
     private val characterRepository: CharacterRepository,
-    private val mapper: CharactersListMapper<Result,CharacterDTO>
+    private val mapper: CharactersListMapper<Result,CharacterModel>
 ) : GetAllCharactersUseCase {
-    override fun invoke(): Flow<NetworkResponse<List<CharacterDTO>>> =
+    override fun invoke(): Flow<NetworkResponse<List<CharacterModel>>> =
         flow {
             emit(NetworkResponse.Loading)
             when (val response = characterRepository.getAllCharacters()) {

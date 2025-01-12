@@ -1,6 +1,6 @@
 package com.blueplane.ramv2.di.mapper
 
-import com.blueplane.ramv2.data.model.dto.CharacterDTO
+import com.blueplane.ramv2.data.model.dto.CharacterModel
 import com.blueplane.ramv2.data.model.response.Result
 import com.blueplane.ramv2.domain.mapper.CharactersListMapper
 import com.blueplane.ramv2.domain.mapper.CharactersListMapperImp
@@ -18,6 +18,6 @@ abstract class MapperModule {
     @ViewModelScoped
     abstract fun bindCharactersListMapper(
         charactersListMapperImp: CharactersListMapperImp
-    ): CharactersListMapper<Result, CharacterDTO>
+    ): CharactersListMapper<Result, CharacterModel>
 
 }
