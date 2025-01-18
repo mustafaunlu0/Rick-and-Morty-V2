@@ -11,11 +11,16 @@ import com.blueplane.ramv2.R
 import com.blueplane.ramv2.databinding.FragmentDetailBinding
 import com.blueplane.ramv2.presentation.MainViewModel
 import com.blueplane.ramv2.presentation.base.BaseFragment
+import com.blueplane.ramv2.presentation.common.navigation.Arguments.ARG_CHARACTER_DETAIL
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
 class DetailFragment : BaseFragment<FragmentDetailBinding>() {
+
+    private val imageStylingResultArguments: CharacterDetailArgument by lazy(LazyThreadSafetyMode.NONE) {
+        arguments?.getParcelable(ARG_CHARACTER_DETAIL)!!
+    }
 
     private val mainViewModel: MainViewModel by activityViewModels()
     private val detailViewModel: DetailViewModel by viewModels()
@@ -39,7 +44,7 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>() {
                 viewState = it
                 executePendingBindings()
             }
-            detailViewModel.getSpecialCharacter("1")
+            detailViewModel.getSpecialCharacter(imageStylingResultArguments.id)
         }
 
     }

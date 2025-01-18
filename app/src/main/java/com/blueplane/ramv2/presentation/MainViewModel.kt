@@ -1,10 +1,13 @@
 package com.blueplane.ramv2.presentation
 
+import androidx.core.os.bundleOf
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.blueplane.ramv2.R
+import com.blueplane.ramv2.presentation.common.navigation.Arguments.ARG_CHARACTER_DETAIL
 import com.blueplane.ramv2.presentation.common.navigation.NavigationData
+import com.blueplane.ramv2.presentation.detail.CharacterDetailArgument
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlin.text.Typography.dagger
@@ -16,9 +19,13 @@ class MainViewModel @Inject constructor() : ViewModel(){
     val navigateToDestination : LiveData<NavigationData> = _navigateToDestination
 
 
-    fun navigateToDetailScreen(){
+    fun navigateToDetailScreen(charID : String){
+        val args = CharacterDetailArgument(
+            id = charID
+        )
         _navigateToDestination.value = NavigationData(
-            destinationId = R.id.detailFragment
+            destinationId = R.id.detailFragment,
+            args = bundleOf(ARG_CHARACTER_DETAIL to args)
         )
     }
 

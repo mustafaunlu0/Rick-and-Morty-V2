@@ -20,8 +20,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
 
     override fun initAdapter() {
-        adapter = CharactersAdapter{
-
+        adapter = CharactersAdapter{ id ->
+            with(mainViewModel){
+                navigateToDetailScreen(id.toString())
+            }
         }
         with(binding){
             charactersRecyclerView.adapter = adapter
