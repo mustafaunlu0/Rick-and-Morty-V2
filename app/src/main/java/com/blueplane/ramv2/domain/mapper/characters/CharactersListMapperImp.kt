@@ -1,4 +1,4 @@
-package com.blueplane.ramv2.domain.mapper
+package com.blueplane.ramv2.domain.mapper.characters
 
 import com.blueplane.ramv2.data.model.dto.CharacterModel
 import com.blueplane.ramv2.data.model.response.Result

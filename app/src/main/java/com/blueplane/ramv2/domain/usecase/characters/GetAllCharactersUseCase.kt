@@ -1,4 +1,4 @@
-package com.blueplane.ramv2.domain.usecase
+package com.blueplane.ramv2.domain.usecase.characters
 
 import com.blueplane.ramv2.data.model.NetworkResponse
 import com.blueplane.ramv2.data.model.dto.CharacterModel

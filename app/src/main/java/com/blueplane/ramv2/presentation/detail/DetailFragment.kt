@@ -18,7 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class DetailFragment : BaseFragment<FragmentDetailBinding>() {
 
     private val mainViewModel: MainViewModel by activityViewModels()
-
+    private val detailViewModel: DetailViewModel by viewModels()
 
     override fun getLayoutId(): Int = R.layout.fragment_detail
 
@@ -26,13 +26,22 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>() {
 
     override fun handleViewOptions() {
         with(binding){
-            testButton.setOnClickListener {
+            backImageView.setOnClickListener {
                 mainViewModel.navigateToHomeScreen()
             }
         }
     }
 
     override fun observeValues() {
+
+        with(binding){
+            detailViewModel.detailViewState.observe(viewLifecycleOwner){
+                viewState = it
+                executePendingBindings()
+            }
+            detailViewModel.getSpecialCharacter("1")
+        }
+
     }
 
 

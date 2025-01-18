@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.blueplane.ramv2.data.model.NetworkResponse
 import com.blueplane.ramv2.data.model.Status
-import com.blueplane.ramv2.domain.usecase.GetAllCharactersUseCase
+import com.blueplane.ramv2.domain.usecase.characters.GetAllCharactersUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
