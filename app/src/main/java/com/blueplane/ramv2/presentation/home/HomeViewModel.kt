@@ -21,7 +21,6 @@ class HomeViewModel @Inject constructor(
 
     val homeViewState : LiveData<HomeUiState> = _homeViewState
 
-
     fun getAllCharacters(){
         getAllCharactersUseCase().onEach {
             when(it){
