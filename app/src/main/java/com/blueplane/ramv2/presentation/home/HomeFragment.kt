@@ -34,20 +34,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun handleViewOptions() {}
 
     override fun observeValues() {
-        with(homeViewModel) {
-            homeViewState.observe(viewLifecycleOwner) {
-                with(binding) {
-                    viewState = it
+        homeViewModel.apply {
+            homeViewState.observe(viewLifecycleOwner) { state ->
+                binding.apply {
+                    viewState = state
                     executePendingBindings()
                 }
-                it.characters?.let {
-                    if(it.size > 0)
-                        adapter.updateItems(it)
+                state.characters?.takeIf { it.isNotEmpty() }?.let { characters ->
+                    adapter.updateItems(characters)
                 }
             }
             getAllCharacters()
         }
     }
-
 
 }
