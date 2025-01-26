@@ -38,7 +38,6 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>() {
     }
 
     override fun observeValues() {
-
         with(binding){
             detailViewModel.detailViewState.observe(viewLifecycleOwner){
                 viewState = it
@@ -46,7 +45,6 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>() {
             }
             detailViewModel.getSpecialCharacter(imageStylingResultArguments.id)
         }
-
     }
 
 
