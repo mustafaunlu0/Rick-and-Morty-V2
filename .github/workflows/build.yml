@@ -9,6 +9,9 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
+      - name: Set Gradle Wrapper Permissions
+        run: chmod +x ./gradlew
+
       - name : Set Up JDK
         uses : actions/setup-java@v1
         with:
